@@ -1,0 +1,72 @@
+{
+    "title": "JavaScript Garden",
+    "langTitle": "JavaScript Garden dalam Bahasa Indonesia",
+    "description": "Panduan Mengenai Keanehan dan Hal-hal yang Tidak Biasa pada JavaScript.",
+    "sections": [
+        {
+            "title": "Pendahuluan",
+            "dir": "intro",
+            "articles": [
+                "authors",
+                "contributors",
+                "license"
+            ]
+        },
+        {
+            "title": "Objects",
+            "dir": "object",
+            "articles": [
+                "general",
+                "prototype",
+                "hasownproperty",
+                "forinloop"
+            ]
+        },
+        {
+            "title": "Functions",
+            "dir": "function",
+            "articles": [
+                "general",
+                "this",
+                "closures",
+                "arguments",
+                "constructors",
+                "scopes"
+            ]
+        },
+        {
+            "title": "Arrays",
+            "dir": "array",
+            "articles": [
+                "general",
+                "constructor"
+            ]
+        },
+        {
+            "title": "Types",
+            "dir": "types",
+            "articles": [
+                "equality",
+                "typeof",
+                "instanceof",
+                "casting"
+            ]
+        },
+        {
+            "title": "Core",
+            "dir": "core",
+            "articles": [
+                "eval",
+                "undefined",
+                "semicolon"
+            ]
+        },
+        {
+            "title": "Lain-lain",
+            "dir": "other",
+            "articles": [
+                "timeouts"
+            ]
+        }
+    ]
+}
