@@ -1,7 +1,7 @@
-## The Authors
+## Para Penulis
 
-This guide is the work of two lovely Stack Overflow users, [Ivo Wetzel][1]
-(Writing) and [Zhang Yi Jiang][2] (Design).
+Panduan ini adalah hasil kerja kerasa dari dua orang pengguna Stack Overflow, [Ivo Wetzel][1]
+(Tulisan) and [Zhang Yi Jiang][2] (Desain).
 
 [1]: http://stackoverflow.com/users/170224/ivo-wetzel
 [2]: http://stackoverflow.com/users/313758/yi-jiang

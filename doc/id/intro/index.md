@@ -1,15 +1,17 @@
-## Intro
+## Pendahuluan
 
-**JavaScript Garden** is a growing collection of documentation about the most 
-quirky parts of the JavaScript programming language. It gives advice to 
-avoid common mistakes, subtle bugs, as well as performance issues and bad 
-practices that non-expert JavaScript programmers may encounter on their 
-endeavours into the depths of the language.
+**JavaScript Garden** merupakan sebuah kumpulan catatan mengenai
+berbagai bagian yang paling tidak biasa yang terdapat pada bahasa
+pemprogramman JavaScript. Panduan ini memberikan berbagai petunjuk untuk
+menghindari kesalahan, bug, serta permasalahan mengenai performa dan
+praktek buruk yang mungkin saja dilakukan oleh programmer pemula ketika
+sedang berusaha mempelajari JavaScript.
 
-JavaScript Garden does **not** aim to teach you JavaScript. Former knowledge
-of the language is strongly recommended in order to understand the topics covered
-in this guide. In order to learn the basics of the language, please head over to 
-the excellent [guide][1] on the Mozilla Developer Network.
+JavaScript garden tidak bermaksud untuk mengajari anda menggunakan
+JavaScript. Untuk memahami panduan ini Anda diharapkan telah memiliki
+pengetahuan dasar mengenai JavaScript. Untuk memperlajari dasar mengenai
+JavaScript, silahkan merujuk ke [panduan][1] yang baik pada situs
+Mozilla Developer Network.
 
 [1]: https://developer.mozilla.org/en/JavaScript/Guide
 
