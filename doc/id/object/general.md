@@ -1,7 +1,7 @@
-## Object Usage and Properties
+## Penggunaan Object dan Propertinya
 
-Everything in JavaScript acts like an object, with the only two exceptions being 
-[`null`](#core.undefined) and [`undefined`](#core.undefined).
+Dalam JavaScript segala seuatu berlaku sebagai object, kecuali 
+[`null`](#core.undefined) dan [`undefined`](#core.undefined).
 
     false.toString() // 'false'
     [1, 2, 3].toString(); // '1,2,3'
@@ -10,37 +10,40 @@ Everything in JavaScript acts like an object, with the only two exceptions being
     Foo.bar = 1;
     Foo.bar; // 1
 
-A common misconception is that number literals cannot be used as
-objects. That is because a flaw in JavaScript's parser tries to parse the *dot 
-notation* on a number as a floating point literal.
+Adalah sebuah kesalahpahaman bahwa number literal tidak dapat digunakan
+sebagai object. Hal ini dikarenakan adanya kecacatan dalam parser
+JavaScript yang akan selalu menterjemahkan *dot notation* dalam sebuah
+angka sebagai sebuah floating point literal.
 
-    2.toString(); // raises SyntaxError
+    2.toString(); // menghasilkan SyntaxError
 
-There are a couple of workarounds which can be used in order make number 
-literals act as objects too.
+Sebenarnya terdapat beberapa cara yang dapat dilakukan untuk membuat
+number literal berlaku seperti object.
 
-    2..toString(); // the second point is correctly recognized
-    2 .toString(); // note the space left to the dot
-    (2).toString(); // 2 is evaluated first
+    2..toString(); // titik kedua yang akan dianggap sebagai notasi
+object
+    2 .toString(); // perhatikan spasi sebelum titik
+    (2).toString(); // 2 akan dievaluasi terlebih dahulu
 
-### Objects as a data type
+### Object sebagai sebuah tipe data
 
-Objects in JavaScript can also be used as a [*Hashmap*][1], they mainly consist 
-of named properties mapping to values.
+Object dalam JavaScript dapat pula digunakan sebagai [*Hashmap*][1],
+yang terdiri dari nama properti yang dipetakan kepada nilai.
 
-Using a object literal - `{}` notation - it is possible to create a 
-plain object. This new object [inherits](#object.prototype) from `Object.prototype` and 
-has no [own properties](#object.hasownproperty) defined on it.
+Sebuah object sederhana dapat dibuat dengan menggunakan notasi `{}`.
+Object yang dibuat dengan cara ini akan menjadi turunan dari
+`Object.prototype` dan tidak memiliki [properti](#object.hasownproperty) yang telah terdefinisi.
 
-    var foo = {}; // a new empty object
+    var foo = {}; // sebuah object kosong
 
-    // a new object with a property called 'test' with value 12
+    // sebuah object dengan properti 'test' yang bernilai 12
     var bar = {test: 12}; 
 
-### Accessing properties
+### Mengakses properti
 
-The properties of an object can be accessed in two ways, via either the dot
-notation, or the square bracket notation.
+Properti pada Object dapat diakses melalui 2 cara, yaitu menggunakan
+notasi titik (dot notation), atau menggunakan notasi kurung siku (square
+bracket notation).
     
     var foo = {name: 'Kitten'}
     foo.name; // kitten
@@ -52,15 +55,15 @@ notation, or the square bracket notation.
     foo.1234; // SyntaxError
     foo['1234']; // works
 
-Both notations are identical in their workings, with the only difference being that
+Kedua notasi tersebut bekerja secara identik, with the only difference being that
 the square bracket notation allows for dynamic setting of properties, as well as
 the use of property names that would otherwise lead to a syntax error.
 
-### Deleting properties
+### Menghapus Properti
 
-The only way to actually remove a property from an object is to use the `delete`
-operator; setting the property to `undefined` or `null` only remove the
-*value* associated with the property, but not the *key*.
+Properti dari sebuah object hanya dapat dihapus dengan menggunakan
+operasi `delete`; mengisi properti dengan nilai `undefined` atau `null`
+hanya akan menghapus *value*-nya saja, tidak dengan *key* propertinya.
 
     var obj = {
         bar: 1,
@@ -77,8 +80,8 @@ operator; setting the property to `undefined` or `null` only remove the
         }
     }
 
-The above outputs both `bar undefined` and `foo null` - only `baz` was
-removed and is therefore missing from the output.
+Contoh diatas akan menghasilkan output `bar undefined` dan `foo
+null` - hanya `baz` yang dihapus dan hilang dari output.
 
 ### Notation of keys
 
@@ -87,13 +90,15 @@ removed and is therefore missing from the output.
         delete: 'I am a keyword too so me' // raises SyntaxError
     };
 
-Object properties can be both notated as plain characters and as strings. Due to
-another mis-design in JavaScript's parser, the above will throw 
-a `SyntaxError` prior to ECMAScript 5.
+Properti dari object dapat dinotasikan sebagai susunan karakter biasa
+atau dapat pula sebagai string. Dikarenakan kecacatan lainnya dalam
+desain parser JavaScript, contoh di atas akan menghasilkan `SyntaxError`
+(terjadi pada ECMAScript sebelum versi 5).
 
-This error arises from the fact that `delete` is a *keyword*; therefore, it must be 
-notated as a *string literal* to ensure that it will be correctly interpreted by
-older JavaScript engines.
+Galat ini muncul dikarenakan `delete` adalah sebuah *keyword*; oleh
+karena itu, keyword tersebut harus dinotasikan sebagai sebuah notasi
+*string literal* hal ini dilakukan untuk memastikan bahwa JavaScript
+engine versi terdahulu dapat menginterpretasikannya dengan benar.
 
 [1]: http://en.wikipedia.org/wiki/Hashmap
 
