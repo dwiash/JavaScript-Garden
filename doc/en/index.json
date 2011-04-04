@@ -6,11 +6,7 @@
         {
             "title": "Intro",
             "dir": "intro",
-            "articles": [
-                "authors",
-                "contributors",
-                "license"
-            ]
+            "articles": []
         },
         {
             "title": "Objects",

@@ -9,7 +9,6 @@ Sections.prototype = {
     init: function(attribute) {
         this.heights = this.page.nav.find('ul').map(function(idx, ele) {
             return $(this).outerHeight();
-
         }).get();
 
         this.links = {
@@ -23,7 +22,7 @@ Sections.prototype = {
             return {
                 id: this.id.replace('.intro', ''),
                 offset: $(this).offset().top - 20,
-                title: $(this).find(':header:first').text()
+                title: $(this).find(':header:first').html()
             };
 
         }).get();
@@ -53,8 +52,8 @@ Sections.prototype = {
         }
 
         if (articleID !== page.article) {
-            nav.find('a[href=#' + page.article + ']').removeClass('active');
-            nav.find('a[href=#' + articleID + ']').addClass('active');
+            nav.find('a[href="#' + page.article + '"]').removeClass('active');
+            nav.find('a[href="#' + articleID + '"]').addClass('active');
 
             page.article = articleID;
             this.mobile(articleID);
@@ -122,7 +121,7 @@ Sections.prototype = {
 
     setLink: function(ele, data) {
         ele.slideDown(100).attr('href', '#' + data.id)
-                       .find('.nav_section_name').text(data.title);
+           .find('.nav_section_name').html(data.title);
     }
 };
 
@@ -130,24 +129,31 @@ Sections.prototype = {
 // This more or less controls the page ------------------------------------------
 // ------------------------------------------------------------------------------
 function Page() {
-    this.window = $(window);
-    this.nav = $('nav > ul > li');
+    $.extend(true, this, {
+        window: $(window),
+        nav: $('nav > ul > li'),
+        section: null,
+        articule: null
+    });
+    
     this.sections = new Sections(this);
-    this.section = null;
-    this.article = null;
     this.init();
 }
 
 Page.prototype = {
     init: function() {
-        var that = this;
+        var that = this,
+            mainNav = $('#nav_main');
 
-        this.scrollLast = 0;
+        $.extend(this, {
+            scrollLast: 0,
+            resizeTimeout: null
+        });
+        
         this.window.scroll(function() {
             that.onScroll();
         });
-
-        this.resizeTimeout = null;
+        
         this.window.resize(function() {
             that.onResize();
         });
@@ -155,18 +161,31 @@ Page.prototype = {
         that.sections.map();
         setTimeout(function() {
             that.sections.highlight();
-
         }, 10);
 
         // Mobile, for position: fixed
         if ($.mobile) {
-            $('#nav_mobile').css('position', 'absolute');
+            var navs = $('#nav_mobile, #nav_main');
+            navs.css('position', 'absolute');
             this.window.scroll(function(){
-                $('#nav_mobile').offset({
+                navs.offset({
                     top: that.window.scrollTop()
                 });
             });
         }
+        
+        // Show menu for tablets
+        $('#show_menu').click(function (){
+            var scrollTop = $.mobile ? that.window.scrollTop() : 0;
+            
+            mainNav.slideDown(300).css('top', scrollTop);
+            return false;
+        });
+        
+        $('#nav_main').click(function(){
+            if(that.window.width() < 1000)
+                mainNav.slideUp(300);
+        });
     },
 
     onScroll: function() {
@@ -183,8 +202,7 @@ Page.prototype = {
         this.resizeTimeout = setTimeout(function() {
             that.sections.map();
             that.sections.expand(that.section);
-
-        }, 50);
+        }, 100);
     }
 };
 
@@ -193,8 +211,7 @@ prettyPrint();
 
 // GA tracking code
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-20768522-1']);
-_gaq.push(['_trackPageview']);
+_gaq.push(['_setAccount', 'UA-20768522-1'], ['_trackPageview']);
 (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
